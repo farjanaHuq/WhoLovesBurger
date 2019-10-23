@@ -28,6 +28,16 @@ const userSchema = new Schema({
          "Password should be longer the 6 character."
       ]
    },
+   // salt: {
+   //    type: String
+   // },
+   // hash: {
+   //    type: String
+   //},
+   date: {
+      type: Date,
+      default: Date.now
+   },
    email: {
       type: String,
       trim: true,
@@ -35,22 +45,18 @@ const userSchema = new Schema({
       required: true,
       match: [/\S+@\S+\.\S+/, "Please enter a valid email address."]
    },
-   userCreated: {
-      type: Date,
-      default: Date.now
-   },
-   lastUpdated:{type:Date}, 
-   // fullName: String,
    emailValidated: {
       type: Boolean,
       default: false
    }
 });
-// userSchema.method.getFullName = function(){
+
+
+// userSchema.methods.getFullName = function(){
 //    this.fullName = this.firstName + " " + this.lastName;
 //    return this.fullName;
 // },
-// userSchema.method.lastUpdatedDate = function(){
+// userSchema.methods.lastUpdatedDate = function(){
 //    this.lastUpdated = Date.now();
 //    return this.lastUpdated;
 // }
